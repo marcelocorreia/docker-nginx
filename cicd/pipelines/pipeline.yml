@@ -18,3 +18,5 @@ jobs:
         trigger: true
       - put: nginx_image
         params: {build: nginx_dockerfile}
+        docker_user: {{ docker_user }}
+        docker_password: {{ docker_password }}
