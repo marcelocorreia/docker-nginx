@@ -22,6 +22,7 @@ resources:
       branch: version
       file: version
       private_key: {{github_secret_key}}
+      username: marcelocorreia
 
 
 jobs:
