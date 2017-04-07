@@ -5,6 +5,9 @@ resources:
       uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: master
       paths: [Dockerfile]
+      private_key: {{github_secret_key}}
+      username: marcelocorreia
+
 
   - name: nginx_image
     type: docker-image
@@ -31,7 +34,7 @@ jobs:
       - get: nginx_dockerfile
         trigger: true
       - put: version
-        params: {bump: minor}
+        params: {bump: patch}
       - put: nginx_image
         params: {build: nginx_dockerfile}
 

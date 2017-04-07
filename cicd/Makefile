@@ -5,7 +5,7 @@ concourse-up:
 	docker-compose up -d
 
 concourse-logs:
-	docker-compose logs -f
+	docker-compose logs concourse-web
 
 concourse-down:
 	docker-compose down
@@ -20,7 +20,7 @@ concourse-ui:
 	python -mwebbrowser http://localhost:$(CONCOURSE_PORT)
 
 pipeline-update:
-	fly -t lite set-pipeline -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l credentials.yml
+	fly -t lite set-pipeline -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l ../creds/credentials.yml
 
 git-lazy:
 	cd ../; git add .; git commit -m "updating..."; git push
