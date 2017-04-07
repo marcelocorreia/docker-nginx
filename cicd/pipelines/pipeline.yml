@@ -29,6 +29,8 @@ jobs:
     plan:
       - get: nginx_dockerfile
         trigger: true
+      - put: version
+        params: {bump: minor}
       - put: nginx_image
         params: {build: nginx_dockerfile}
 
