@@ -37,4 +37,6 @@ jobs:
         params: {bump: patch}
       - put: nginx_image
         params: {build: nginx_dockerfile}
+      - put: version
+        params: {file: version}
 
