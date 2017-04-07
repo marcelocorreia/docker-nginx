@@ -24,7 +24,7 @@ pipeline-update:
 
 git-lazy:
 	git add .; git commit -m "updating..."; git push
-	
+
 docs:
 	grip -b
 

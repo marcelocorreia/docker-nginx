@@ -2,7 +2,7 @@ resources:
   - name: nginx_dockerfile
     type: git
     source:
-      uri: git@github.com:marcelocorreia/docker-nginx.git
+      uri: https://github.com/marcelocorreia/docker-nginx.git
       branch: master
       paths: [Dockerfile]
 
