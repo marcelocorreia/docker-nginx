@@ -10,6 +10,9 @@ resources:
     type: docker-image
     source:
      repository: marcelocorreia/docker-nginx
+     username: {{ docker_user}}
+     password: {{ docker_password }}
+
 
 jobs:
   - name: build
@@ -18,5 +21,4 @@ jobs:
         trigger: true
       - put: nginx_image
         params: {build: nginx_dockerfile}
-        docker_user: {{ docker_user }}
-        docker_password: {{ docker_password }}
+
