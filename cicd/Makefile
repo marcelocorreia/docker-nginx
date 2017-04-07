@@ -22,6 +22,9 @@ concourse-ui:
 pipeline-update:
 	fly -t lite set-pipeline -p $(PIPELINE_NAME) -c pipelines/pipeline.yml
 
+git-lazy:
+	git add .; git commit -m "updating..."; git push
+	
 docs:
 	grip -b
 
