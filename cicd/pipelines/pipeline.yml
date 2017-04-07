@@ -2,7 +2,7 @@ resources:
   - name: nginx_dockerfile
     type: git
     source:
-      uri: https://github.com/marcelocorreia/docker-nginx.git
+      uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: master
       paths: [Dockerfile]
 
@@ -18,7 +18,7 @@ resources:
     type: semver
     source:
       driver: git
-      uri: https://github.com/marcelocorreia/docker-nginx.git
+      uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: version
       file: version
       private_key: {{github_secret_key}}
