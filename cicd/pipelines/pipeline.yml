@@ -31,7 +31,7 @@ resources:
     source:
       driver: git
       uri: git@github.com:marcelocorreia/docker-nginx.git
-      branch: master
+      branch: version
       file: version
       private_key: {{github_secret_key}}
       username: marcelocorreia
