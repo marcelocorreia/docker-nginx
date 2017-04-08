@@ -35,6 +35,12 @@ resources:
       private_key: {{github_secret_key}}
       username: marcelocorreia
 
+  - name: gh-release
+    type: github-release
+    source:
+      user: {{github_user}}
+      repository: docker-nginx
+      access_token: {{github_token}}
 
 jobs:
   - name: build
@@ -52,3 +58,7 @@ jobs:
         params: {build: nginx_dockerfile, tag: resource_version/version }
       - put: resource_version
         params: {file: resource_version/version}
+      - put: gh-release
+        params:
+          name: resource_version/version
+          tag: resource_version/version
