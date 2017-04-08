@@ -39,6 +39,6 @@ jobs:
       - put: nginx_image
         params: {build: nginx_dockerfile}
       - put: nginx_image
-        params: {build: nginx_dockerfile, tag: resource_version }
+        params: {build: nginx_dockerfile, tag: resource_version/version }
       - put: resource_version
         params: {file: resource_version/version}
