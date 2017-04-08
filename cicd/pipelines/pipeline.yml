@@ -5,7 +5,7 @@ resources:
       uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: master
       paths: [Dockerfile]
-      private_key: {{github_secret_key}}
+      private_key: {{github_private_key}}
       username: marcelocorreia
 
   - name: nginx_docker_repo
@@ -13,7 +13,7 @@ resources:
     source:
       uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: master
-      private_key: {{github_secret_key}}
+      private_key: {{github_private_key}}
       username: marcelocorreia
 
   - name: nginx_image
@@ -32,7 +32,7 @@ resources:
       uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: version
       file: version
-      private_key: {{github_secret_key}}
+      private_key: {{github_private_key}}
       username: marcelocorreia
 
   - name: gh-release
