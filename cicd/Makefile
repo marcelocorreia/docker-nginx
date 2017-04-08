@@ -19,7 +19,7 @@ concourse-login:
 concourse-ui:
 	python -mwebbrowser http://localhost:$(CONCOURSE_PORT)
 
-pipeline-update:
+pipeline-update: git-lazy
 	fly -t lite set-pipeline -n -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l ../creds/credentials.yml
 
 pipeline-destroy:
