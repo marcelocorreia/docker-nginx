@@ -1,2 +1,2 @@
 git_repo_url: git@github.com:marcelocorreia/docker-nginx.git
-container_name: docker-nginx
+container_name: marcelocorreia/docker-nginx
