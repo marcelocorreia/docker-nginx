@@ -4,7 +4,6 @@ resources:
     source:
       uri: git@github.com:marcelocorreia/docker-nginx.git
       branch: master
-      paths: nginx_docker_repo
       private_key: {{github_secret_key}}
       username: marcelocorreia
 
@@ -41,6 +40,8 @@ jobs:
   - name: build
     serial: true
     plan:
+      - get: nginx_docker_repo
+        trigger: true
       - get: nginx_dockerfile
         trigger: true
       - put: resource_version
