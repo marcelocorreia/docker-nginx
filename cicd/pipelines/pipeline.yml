@@ -8,6 +8,14 @@ resources:
       private_key: {{github_secret_key}}
       username: marcelocorreia
 
+  - name: nginx_docker_repo
+    type: git
+    source:
+      uri: git@github.com:marcelocorreia/docker-nginx.git
+      branch: master
+      private_key: {{github_secret_key}}
+      username: marcelocorreia
+
   - name: nginx_image
     type: docker-image
     source:
@@ -33,6 +41,8 @@ jobs:
     serial: true
     plan:
       - get: nginx_dockerfile
+        trigger: true
+      - get: nginx_docker_repo
         trigger: true
       - put: resource_version
         params: {bump: minor}
