@@ -25,6 +25,12 @@ pipeline-update:
 git-lazy:
 	cd ../; git add .; git commit -m "updating..."; git push
 
+git-fetch:
+	cd ../; git fetch
+
+git-pull:
+	cd ../; git pull
+
 docs:
 	grip -b
 
