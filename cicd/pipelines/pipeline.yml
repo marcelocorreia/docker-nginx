@@ -6,7 +6,7 @@ resources:
       branch: master
       paths: [Dockerfile]
       private_key: {{git_private_key}}
-      username: marcelocorreia
+      username: {{github_user}}
 
   - name: git_repo
     type: git
@@ -14,12 +14,12 @@ resources:
       uri: {{git_repo_url}}
       branch: master
       private_key: {{git_private_key}}
-      username: marcelocorreia
+      username: {{github_user}}
 
   - name: docker_image
     type: docker-image
     source:
-      repository: marcelocorreia/docker-nginx
+      repository: '{{docker_user}}/{{container_name}}'
       email: {{docker_mail}}
       username: {{docker_user}}
       password: {{docker_password}}
@@ -33,7 +33,7 @@ resources:
       branch: version
       file: version
       private_key: {{git_private_key}}
-      username: marcelocorreia
+      username: {{github_user}}
 
   - name: gh-release
     type: github-release
