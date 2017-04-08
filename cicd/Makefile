@@ -20,7 +20,7 @@ concourse-ui:
 	python -mwebbrowser http://localhost:$(CONCOURSE_PORT)
 
 pipeline-update:
-	fly -t lite set-pipeline -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l ../creds/credentials.yml
+	fly -t lite set-pipeline -n -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l ../creds/credentials.yml
 
 git-lazy:
 	cd ../; git add .; git commit -m "updating..."; git push
