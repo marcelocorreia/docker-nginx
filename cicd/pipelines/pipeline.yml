@@ -1,4 +1,13 @@
 resources:
+  - name: nginx_docker_repo
+    type: git
+    source:
+      uri: git@github.com:marcelocorreia/docker-nginx.git
+      branch: master
+      paths: nginx_docker_repo
+      private_key: {{github_secret_key}}
+      username: marcelocorreia
+
   - name: nginx_dockerfile
     type: git
     source:
