@@ -30,16 +30,13 @@ resources:
 
 jobs:
   - name: build
+    serial: true
     plan:
       - get: nginx_dockerfile
         trigger: true
       - put: resource_version
-        params: {bump: patch}
+        params: {pre: rc}
       - put: nginx_image
         params: {build: nginx_dockerfile}
       - put: resource_version
         params: {file: version/version}
-      - run:
-        path: cat
-        args: resource_version/number
-

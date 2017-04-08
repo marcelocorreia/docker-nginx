@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: alpine:3.5
+
+
+inputs:
+  - name: resource_version
+
+run:
+  dir: resource_version
+  path: cat
+  args: [ version ]
+
+
