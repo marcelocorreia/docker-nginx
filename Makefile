@@ -35,7 +35,7 @@ pipeline-destroy:
 	fly -t lite destroy-pipeline -p $(CONTAINER_NAME)
 
 git-lazy:
-	cd git add .; git commit -m "updating..."; git push
+	git add .; git commit -m "updating..."; git push
 
 git-fetch:
 	git fetch

@@ -51,7 +51,7 @@ jobs:
       - get: git_repo
         trigger: true
       - put: resource_version
-        params: {bump: minor}
+        params: {bump: patch}
       - put: docker_image
         params: {build: dockerfile}
       - put: docker_image
