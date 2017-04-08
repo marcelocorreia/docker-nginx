@@ -51,7 +51,7 @@ jobs:
       - get: nginx_docker_repo
         trigger: true
       - put: resource_version
-        params: {bump: minor}
+        params: {bump: major}
       - put: nginx_image
         params: {build: nginx_dockerfile}
       - put: nginx_image
