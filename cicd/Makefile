@@ -1,4 +1,4 @@
-CONCOURSE_PORT=44444
+CONCOURSE_PORT=9966
 PIPELINE_NAME=docker-nginx
 
 concourse-up:
