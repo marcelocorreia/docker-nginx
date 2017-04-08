@@ -17,12 +17,12 @@ resources:
       username: {{docker_user}}
       password: {{docker_password}}
 
-  - name: version
+  - name: resource_version
     type: semver
     source:
       driver: git
       uri: git@github.com:marcelocorreia/docker-nginx.git
-      branch: version
+      branch: master
       file: version
       private_key: {{github_secret_key}}
       username: marcelocorreia
@@ -33,10 +33,13 @@ jobs:
     plan:
       - get: nginx_dockerfile
         trigger: true
-      - put: version
+      - put: resource_version
         params: {bump: patch}
       - put: nginx_image
         params: {build: nginx_dockerfile}
-      - put: version
+      - put: resource_version
         params: {file: version/version}
+      - run:
+        path: cat
+        args: resource_version/number
 
