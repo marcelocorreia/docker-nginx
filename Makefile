@@ -1,5 +1,8 @@
 CONCOURSE_PORT=9966
 PIPELINE_NAME=docker-nginx
+GIT_REPO_URL=git@github.com:marcelocorreia/docker-nginx.git
+
+super-lazy: git-lazy pipeline-update
 
 concourse-up:
 	docker-compose up -d
@@ -20,21 +23,20 @@ concourse-ui:
 	python -mwebbrowser http://localhost:$(CONCOURSE_PORT)
 
 pipeline-update:
-	fly -t lite set-pipeline -n -p $(PIPELINE_NAME) -c pipelines/pipeline.yml -l ../creds/credentials.yml
+	fly -t lite set-pipeline -n -p $(PIPELINE_NAME) -c cicd/pipelines/pipeline.yml -l creds/credentials.yml -v git_repo_url=$(GIT_REPO_URL)
 
-super-lazy: git-lazy pipeline-update
 
 pipeline-destroy:
 	fly -t lite destroy-pipeline -p $(PIPELINE_NAME)
 
 git-lazy:
-	cd ../; git add .; git commit -m "updating..."; git push
+	cd git add .; git commit -m "updating..."; git push
 
 git-fetch:
-	cd ../; git fetch
+	git fetch
 
 git-pull:
-	cd ../; git pull
+	git pull
 
 docs:
 	grip -b
