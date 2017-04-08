@@ -1,22 +1,22 @@
 resources:
-  - name: nginx_dockerfile
+  - name: dockerfile
     type: git
     source:
-      uri: git@github.com:marcelocorreia/docker-nginx.git
+      uri: {{git_repo_url}}
       branch: master
       paths: [Dockerfile]
-      private_key: {{github_private_key}}
+      private_key: {{git_private_key}}
       username: marcelocorreia
 
-  - name: nginx_docker_repo
+  - name: git_repo
     type: git
     source:
-      uri: git@github.com:marcelocorreia/docker-nginx.git
+      uri: {{git_repo_url}}
       branch: master
-      private_key: {{github_private_key}}
+      private_key: {{git_private_key}}
       username: marcelocorreia
 
-  - name: nginx_image
+  - name: docker_image
     type: docker-image
     source:
       repository: marcelocorreia/docker-nginx
@@ -29,10 +29,10 @@ resources:
     source:
       driver: git
       initial_version: 0.0.1
-      uri: git@github.com:marcelocorreia/docker-nginx.git
+      uri: {{git_repo_url}}
       branch: version
       file: version
-      private_key: {{github_private_key}}
+      private_key: {{git_private_key}}
       username: marcelocorreia
 
   - name: gh-release
@@ -46,16 +46,16 @@ jobs:
   - name: build
     serial: true
     plan:
-      - get: nginx_dockerfile
+      - get: dockerfile
         trigger: true
-      - get: nginx_docker_repo
+      - get: git_repo
         trigger: true
       - put: resource_version
         params: {bump: major}
-      - put: nginx_image
-        params: {build: nginx_dockerfile}
-      - put: nginx_image
-        params: {build: nginx_dockerfile, tag: resource_version/version }
+      - put: docker_image
+        params: {build: dockerfile}
+      - put: docker_image
+        params: {build: dockerfile, tag: resource_version/version }
       - put: resource_version
         params: {file: resource_version/version}
       - put: gh-release
